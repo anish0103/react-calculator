@@ -1,9 +1,10 @@
 import React from 'react';
 import './css/display.css'
+import { motion } from 'framer-motion'
 
 const display = (Probs) => {
     let content;
-    if(Probs.displayvalue===''){
+    if (Probs.displayvalue === '') {
         content = '0';
     } else {
         content = Probs.displayvalue;
@@ -11,9 +12,14 @@ const display = (Probs) => {
 
     return (
         <div className='displaycontainer'>
-            <div className='number'>
+            <motion.div
+                initial={{ scale: 0, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ type: "spring", stiffness: 500 }}
+                className='number'
+            >
                 {content}
-            </div>
+            </motion.div>
         </div>
     );
 }
